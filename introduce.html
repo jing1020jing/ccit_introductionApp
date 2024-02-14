@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁影片播放</title>
+    <style>
+        /* 设置html和body的高度为100% */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 使用CSS来控制iframe的大小 */
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+</head>
+
+<body>
+
+
+
+    <!-- <video width="640" height="360" controls>
+        <source src="D:\ccit_113\animation_observation50fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> -->
+    <p id="returnHomeMessage" style="display:none;">观看完毕，请点击下方按钮返回首页。</p>
+
+
+    <iframe src="https://www.youtube.com/embed/oB4IeRsYjFk?autoplay=1" title="YouTube视频播放器" frameborder="0"
+        allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+    <!-- <a href="index .html">回上一頁</a> -->
+
+    <a href="index.html" id="returnHomeButton" style="display:none;">返回首页</a>
+
+    <script>
+        function startVideo() {
+            var iframe = document.getElementById('youtubeFrame');
+            var returnHomeMessage = document.getElementById('returnHomeMessage');
+            var returnHomeButton = document.getElementById('returnHomeButton');
+
+            iframe.src = "https://www.youtube.com/embed/oB4IeRsYjFk?autoplay=1";
+
+            // 监听视频播放结束事件
+            iframe.addEventListener('load', function () {
+                iframe.contentWindow.document.querySelector('video').addEventListener('ended', function () {
+                    // 显示提示信息和返回首页的按钮
+                    returnHomeMessage.style.display = 'block';
+                    returnHomeButton.style.display = 'block';
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
